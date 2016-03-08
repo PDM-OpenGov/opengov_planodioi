@@ -7,9 +7,9 @@
 	*	Loads the HomePage (no parameter is given)
 	*  -------------------------------------------------------------------------------------*/
 	function load_home(){
-		include(ABSPATH.'modules/views/header.php');
-		include(ABSPATH.'modules/views/home.php');
-		include(ABSPATH.'modules/views/footer.php');
+		include(ABSCPATH.'modules/views/header.php');
+		include(ABSCPATH.'modules/views/home.php');
+		include(ABSCPATH.'modules/views/footer.php');
 	}
 	
 	/* 	-------------------------------------------------------------------------------------
@@ -30,10 +30,10 @@
 				$path_temp = explode('&', $params[1]);
 				$path = $path_temp[0];
 			}
-			include(ABSPATH.'apps/'.$params[0].'/init.php');
-			include(ABSPATH.'modules/views/header.php');
-			include(ABSPATH.'apps/'.$params[0].'/'.$path.'.php');
-			include(ABSPATH.'modules/views/footer.php');
+			include(ABSCPATH.'apps/'.$params[0].'/init.php');
+			include(ABSCPATH.'modules/views/header.php');
+			include(ABSCPATH.'apps/'.$params[0].'/'.$path.'.php');
+			include(ABSCPATH.'modules/views/footer.php');
 		} else{
 			$message_list[] = array( 'type' => 'danger', 'message'	=> 'Η Εφαρμογή δεν εντοπίστηκε..' );
 			load_home();
@@ -62,7 +62,7 @@
 	function print_css(){
 		global $css_files;
 		foreach($css_files as $file)
-			echo '<link href="'.URL.'/'.$file['path'].'" rel="stylesheet" type="text/css">';
+			echo '<link href="'.ROOT_URL.'/'.$file['path'].'" rel="stylesheet" type="text/css">';
 	}
 	
 	/* 	-------------------------------------------------------------------------------------
@@ -86,10 +86,10 @@
 		foreach($js_files as $file){
 			if($head){
 				if($file['head'])
-					echo '<script src="'.URL.'/'.$file['path'].'"></script>';
+					echo '<script src="'.ROOT_URL.'/'.$file['path'].'"></script>';
 			}else{
 				if(!$file['head'])
-					echo '<script src="'.URL.'/'.$file['path'].'"></script>';
+					echo '<script src="'.ROOT_URL.'/'.$file['path'].'"></script>';
 			}
 		}		
 	}
