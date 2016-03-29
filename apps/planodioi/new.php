@@ -3,7 +3,10 @@
 		<h3 class="page-title">Αίτησης Ανανέωσης</h3>
 	</div>
 </div>
- <?php 
+ <?php
+	// For Debug..
+	// print_r($_SESSION['gsis_user']);
+	// print_r($_SESSION['gsis_user_id']);
 	if(isset($_POST['num_leaves'])){ ?>
 		<div  class="alert alert-success">
 			<p>Η αίτησή σας έχει υποβληθεί επιτυχώς. Λάβατε αριθμό πρωτοκόλλου 1283209232-12121.</p>
@@ -20,27 +23,27 @@
 		<form name="leaveform" id="leaveform" method="post" action="<?php echo URL; ?>/?p=planodioi|new">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="panel panel-primary">
+					<div class="panel panel-success">
 						<div class="panel-heading">
 							Προσωπικά Στοιχεία
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
-								<label>Όνομα</label>
-								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="Όνομα">
+								<label>Όνομα</label> 
+								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="<?php echo $_SESSION['gsis_user_id']['firstName']; ?>">
 							</div>
 							<div class="form-group">
 								<label>Επίθετο</label>
-								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="Επίθετο">
+								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="<?php echo $_SESSION['gsis_user_id']['surname']; ?>">
 							</div>
 							<div class="form-group">
 								<label>ΑΦΜ</label>
-								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="123456788">
+								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="<?php echo $_SESSION['gsis_user']['afm']; ?>">
 							</div>
 							<div class="form-group">
 								<label>Διεύθυνση</label>
-								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="123456788">
-							</div>
+								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="<?php echo $_SESSION['gsis_user_id']['postalAddress'].' '.$_SESSION['gsis_user_id']['postalNo']; ?>">
+							</div> 
 						</div>
 					</div>
 				</div>
@@ -53,19 +56,19 @@
 						<div class="panel-body">
 							<div class="form-group">
 								<label>Τηλέφωνο</label>
-								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="213456876">
+								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="">
 							</div>
 							<div class="form-group">
 								<label>Κινητό</label>
-								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="69777445566">
+								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="">
 							</div>
 							<div class="form-group">
 								<label>eMail</label>
-								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="name@domain.gr">
+								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="">
 							</div>
 							<div class="form-group">
 								<label>Fax</label>
-								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="213456876">
+								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="">
 							</div>
 						</div>
 					</div>
@@ -79,18 +82,19 @@
 						<div class="panel-body">
 							<div class="form-group">
 								<label>Αριθμός Μητρώου Παραγωγού</label>
-								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="213456876">
+								<input class="form-control required" name="num_leaves" id="num_leaves" type="text" value="">
 							</div>
 							<div class="form-group">
 								<label>Δήμος Υπαγωγής</label>
 								<select name="user_tel" class="form-control" id="user_tel">
-									<option>..</option>
 									<option>Κοζάνης</option>
 									<option>Καστοριάς</option>
+									<option>Γρεβενών</option>
+									<option>Φλώρινας</option>
 								</select>
 							</div>
-							<div  class="alert alert-success">Είστε Φορολογικά Ενήμερος (1283209232)</div>
-							<div  class="alert alert-success">Είστε Ασφαλιστικά Ενήμερος (1283209232)</div>
+							<div  class="alert alert-success">Είστε Φορολογικά Ενήμερος (<?php echo $_SESSION['gsis_user']['afm']; ?>)</div>
+							<div  class="alert alert-success">Είστε Ασφαλιστικά Ενήμερος (<?php echo $_SESSION['gsis_user']['afm']; ?>)</div>
 						</div>
 					</div>
 				</div>
